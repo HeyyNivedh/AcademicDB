@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import GridDistortion from "@/components/GridDistortion";
 
 export default function Home() {
   const router = useRouter();
@@ -62,9 +63,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen font-sans flex flex-col items-center justify-center p-6 relative overflow-hidden">
-      {/* Background gradients */}
-      <div className="absolute top-[10%] left-[-10%] w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px] -z-10"></div>
-      <div className="absolute bottom-[10%] right-[-10%] w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] -z-10"></div>
+      {/* 3D Grid Distortion Background */}
+      <div className="absolute inset-0 -z-10 bg-slate-950">
+        <GridDistortion
+          imageSrc="/bg.png"
+          grid={15}
+          mouse={0.1}
+          strength={0.15}
+          relaxation={0.9}
+          className="opacity-40"
+        />
+      </div>
 
       <div className="w-full max-w-2xl z-10 mt-10">
         <div className="text-center mb-10">
@@ -179,8 +188,8 @@ export default function Home() {
               type="submit"
               disabled={isLoading}
               className={`w-full py-4 rounded-xl font-bold text-white shadow-lg focus:outline-none transition-all duration-300 transform group ${isLoading
-                  ? "bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700"
-                  : "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:scale-[1.01] hover:shadow-[0_0_30px_rgba(79,70,229,0.3)] border border-transparent"
+                ? "bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700"
+                : "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:scale-[1.01] hover:shadow-[0_0_30px_rgba(79,70,229,0.3)] border border-transparent"
                 }`}
             >
               <div className="flex items-center justify-center">

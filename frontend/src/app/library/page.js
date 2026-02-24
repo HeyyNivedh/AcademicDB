@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import GridDistortion from "@/components/GridDistortion";
 
 export default function Library() {
     const [resources, setResources] = useState([]);
@@ -99,7 +100,18 @@ export default function Library() {
     };
 
     return (
-        <div className="min-h-screen p-6 md:p-12 max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+        <div className="min-h-screen p-6 md:p-12 max-w-7xl mx-auto flex flex-col md:flex-row gap-8 relative overflow-hidden">
+            {/* 3D Grid Distortion Background */}
+            <div className="fixed inset-0 -z-10 bg-slate-950">
+                <GridDistortion
+                    imageSrc="/bg.png"
+                    grid={12}
+                    mouse={0.1}
+                    strength={0.10}
+                    relaxation={0.9}
+                    className="opacity-20"
+                />
+            </div>
 
             {/* Sidebar for Subjects */}
             <div className="w-full md:w-64 flex-shrink-0">
